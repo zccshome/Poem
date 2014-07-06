@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+	<context:component-scan base-package="com.zccshome.spring_mvc_test.controller,com.zccshome.spring_mvc_test.service,com.zccshome.spring_mvc_test.dao" />
+	<mvc:annotation-driven/>
+	<mvc:default-servlet-handler/>
+	
+	<bean id="metadataVODS" class="com.zccshome.spring_mvc_test.bean.loser.LoserDS" />
+	<bean id="marshallingConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+          <property name="supportedMediaTypes" value="application/xml"/>
+    </bean>
+    <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+       <property name="supportedMediaTypes" value="application/json" />
+    </bean>
+    <bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound">
+          <list>
+            <value>com.zccshome.spring_mvc_test.bean.loser.LoserGroup</value>
+            <value>com.zccshome.spring_mvc_test.bean.loser.Loser</value>
+          </list>
+        </property>
+    </bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+       <property name="messageConverters">
+           <list>
+               <ref bean="jsonConverter" />
+               <ref bean="marshallingConverter" />
+           </list>
+       </property>
+     </bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
