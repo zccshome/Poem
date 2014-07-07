@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.zccshome.spring_mvc_test.bean.loser.Loser;
-import com.zccshome.spring_mvc_test.bean.loser.LoserGroup;
+import com.zccshome.spring_mvc_test.deprecated.bean.loser.Loser;
+import com.zccshome.spring_mvc_test.deprecated.bean.loser.LoserGroup;
 import com.zccshome.spring_mvc_test.client.LoserClient;
 
 

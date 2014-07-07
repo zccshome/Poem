@@ -29,7 +29,7 @@ public class PMHibernateImpl extends HibernateDaoSupport implements
 
 	public static IPersistenceManager getInstance() {
 		ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
-				new String[] { "HibernateApplicationContext.xml" });
+				new String[] { "/WEB-INF/HibernateApplicationContext-aop.xml" });
 		return (IPersistenceManager) ((BeanFactory) appContext)
 				.getBean("objectFactory");
 	}

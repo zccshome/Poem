@@ -1,4 +1,4 @@
-package com.zccshome.spring_mvc_test.bean.loser;
+package com.zccshome.spring_mvc_test.deprecated.bean.loser;
 
 public class LoserDS {
 	

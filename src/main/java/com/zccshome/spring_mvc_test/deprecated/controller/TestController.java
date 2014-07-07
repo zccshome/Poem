@@ -1,4 +1,4 @@
-package com.zccshome.spring_mvc_test.controller;
+package com.zccshome.spring_mvc_test.deprecated.controller;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zccshome.spring_mvc_test.bean.poem.Poem;
-import com.zccshome.spring_mvc_test.service.PoemService;
+import com.zccshome.spring_mvc_test.service.impl.PoemService;
 
 @Controller
 @RequestMapping("/poem")

@@ -1,23 +1,22 @@
 package com.zccshome.spring_mvc_test.bean.poem;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
 
 import com.zccshome.spring_mvc_test.hibernate.common.BaseModelObject;
 
 @Entity
-public class Poem extends BaseModelObject {
-	//private Integer poemId;
+public class Poem {
+	private Integer poemId;
 	private String bookNum;
 	private String poemNum;
 	private String title;
 	private String author;
 	private String content;
 
-	/*
+	
 	@Id
 	@GeneratedValue
 	public Integer getPoemId() {
@@ -27,7 +26,6 @@ public class Poem extends BaseModelObject {
 	public void setPoemId(Integer poemId) {
 		this.poemId = poemId;
 	}
-	*/
 	
 	@Column(name="poemBookNum", length = 3, nullable = false)
 	public String getBookNum() {

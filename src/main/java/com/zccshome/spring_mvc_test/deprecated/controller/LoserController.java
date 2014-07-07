@@ -1,4 +1,4 @@
-package com.zccshome.spring_mvc_test.controller;
+package com.zccshome.spring_mvc_test.deprecated.controller;
 
 import javax.annotation.Resource;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zccshome.spring_mvc_test.bean.loser.Loser;
-import com.zccshome.spring_mvc_test.bean.loser.LoserDS;
-import com.zccshome.spring_mvc_test.bean.loser.LoserGroup;
+import com.zccshome.spring_mvc_test.deprecated.bean.loser.Loser;
+import com.zccshome.spring_mvc_test.deprecated.bean.loser.LoserDS;
+import com.zccshome.spring_mvc_test.deprecated.bean.loser.LoserGroup;
 
 @Controller
 @RequestMapping("/loser")
