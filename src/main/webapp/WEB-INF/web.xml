@@ -9,14 +9,14 @@
 	</listener>
 
 	<context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/poem-servlet.xml,/WEB-INF/HibernateApplicationContext-aop.xml</param-value>
-    </context-param>
-	
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/poem-servlet.xml,/WEB-INF/HibernateApplicationContext-aop.xml</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>poem</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
