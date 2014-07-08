@@ -1,5 +1,7 @@
 package com.zccshome.poem.service.core;
 
-public interface IPoemService {
+import com.zccshome.poem.bean.poem.Poem;
 
+public interface IPoemService {
+	public Poem getPoemById(int id);
 }

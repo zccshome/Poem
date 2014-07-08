@@ -19,9 +19,9 @@ public class Poem {
 	private String author;
 	private String content;
 
-	@XmlElement(name="ID")
 	@Id
 	@GeneratedValue
+	@Column(name = "poemId")
 	public Integer getPoemId() {
 		return poemId;
 	}

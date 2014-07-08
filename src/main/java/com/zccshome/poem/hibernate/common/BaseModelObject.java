@@ -11,6 +11,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 
+
 @MappedSuperclass
 public abstract class BaseModelObject implements IModelObject,
 		Comparable<IModelObject> {
