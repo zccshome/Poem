@@ -1,5 +1,8 @@
 /.settings
 /target
+/target/*
 /build
+/build/*
 /.classpath
 /.project
+/WebContent
