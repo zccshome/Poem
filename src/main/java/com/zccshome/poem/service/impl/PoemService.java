@@ -24,6 +24,12 @@ public class PoemService implements IPoemService {
 	}
 	
 	public List<Poem> getAllPoems() {
+		logger.info("Get all poems");
 		return poemDao.getAllPoems();
+	}
+	
+	public Poem getPoemByBookAndPoemNum(String bookNum, String poemNum) {
+		logger.info("Get poem by bookNum: " + bookNum + " and poemNum: " + poemNum);
+		return poemDao.getPoemByBookAndPoemNum(bookNum, poemNum);
 	}
 }

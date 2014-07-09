@@ -3,6 +3,8 @@ package com.zccshome.poem.dao.core;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
+
 public interface IBaseDao<T> {
 	public T getById(Class<T> c, Serializable id);
 	public void save(T object);
@@ -10,4 +12,5 @@ public interface IBaseDao<T> {
 	public void saveOrUpdate(T object);
 	public void delete(T object);
 	public List<T> getAll(Class<T> c);
+	public Query createQuery(String hql);
 }

@@ -28,4 +28,9 @@ public class PoemController {
 	public @ResponseBody List<Poem> getAllPoems() {
 		return poemService.getAllPoems();
 	}
+	
+	@RequestMapping(value = "/{bookNum}/{poemNum}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody Poem getPoemByBookAndPoemNum(@PathVariable String bookNum, @PathVariable String poemNum) {
+		return poemService.getPoemByBookAndPoemNum(bookNum, poemNum);
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,5 +51,9 @@ public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {
 	@Override
 	public List<T> getAll(Class<T> c) {
 		return this.getHibernateTemplate().find("from " + c.getName());
+	}
+	
+	public Query createQuery(String hql) {
+		return getSession().createQuery(hql);
 	}
 }

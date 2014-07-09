@@ -22,8 +22,6 @@ def getPage(book_num, poem_num):
 	info_result = re.search(r'未检索到唐诗之内容（第[0-9]+卷[0-9]+号）', webcontent)
 	
 	if info_result:
-		#book_num = book_num + 1
-		#getPage(book_num, 1)
 		return
 	
 	info_result = re.search(r'全唐诗第([0-9]+)卷第([0-9]+)首', webcontent)
@@ -120,6 +118,6 @@ def preservePage(poemClass):
 
 if __name__ == '__main__':
 	print('Hello World!')
-	#getPage(50, 17)
-	for i in range(51, 900):
+	#getPage(1, 1)
+	for i in range(1, 901):
 		getPage(i,1)

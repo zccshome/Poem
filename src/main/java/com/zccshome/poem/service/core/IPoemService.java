@@ -8,4 +8,6 @@ public interface IPoemService {
 	public Poem getPoemById(int id);
 	
 	public List<Poem> getAllPoems();
+	
+	public Poem getPoemByBookAndPoemNum(String bookNum, String poemNum);
 }
