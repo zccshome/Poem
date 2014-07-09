@@ -66,4 +66,24 @@ public class PoemController {
 	public @ResponseBody List<Poem> getPoemByAuthor(@PathVariable String author) {
 		return poemService.getPoemByAuthor(author);
 	}
+	
+	/**
+	 * Get poems of a certain author of a certain page number.
+	 * @param author
+	 * @param page
+	 * @return
+	 */
+	@RequestMapping(value = "/author/{author}/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody List<Poem> getPoemByAuthorOfPage(@PathVariable String author, @PathVariable int page) {
+		return poemService.getPoemByAuthorOfPage(author, page);
+	}
+	/**
+	 * Get poems of a certain page number.
+	 * @param page
+	 * @return
+	 */
+	@RequestMapping(value = "/page/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody List<Poem> getPoemOfPage(@PathVariable int page) {
+		return poemService.getPoemOfPage(page);
+	}
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zccshome.poem.bean.poem.Poem;
 import com.zccshome.poem.dao.core.IPoemDao;
+import com.zccshome.poem.utils.Constants;
 
 /**
  * 
@@ -38,6 +39,32 @@ public class PoemDao extends BaseDao<Poem> implements IPoemDao {
 	public List<Poem> getPoemByAuthor(String author) {
 		Query query = createQuery("from Poem where author = ?");
 		query.setString(0, author);
+		return query.list().size() > 0 ? (List<Poem>)query.list() : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Poem> getPoemByAuthorOfPage(String author, int page) {
+		Query query = createQuery("select count(*) from Poem where author = ?");
+		query.setString(0, author);
+		int size = ((Long)query.list().get(0)).intValue();
+		
+		page = (size > page * Constants.PAGE_SIZE) ? page : size / Constants.PAGE_SIZE;
+		query = createQuery("from Poem where author = ?");
+		query.setString(0, author);
+		query.setFirstResult(page * Constants.PAGE_SIZE);
+		query.setMaxResults(Constants.PAGE_SIZE);
+		return query.list().size() > 0 ? (List<Poem>)query.list() : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Poem> getPoemOfPage(int page) {
+		Query query = createQuery("select count(*) from Poem");
+		int size = ((Long)query.list().get(0)).intValue();
+		
+		page = (size > page * Constants.PAGE_SIZE) ? page : size / Constants.PAGE_SIZE;
+		query = createQuery("from Poem");
+		query.setFirstResult(page * Constants.PAGE_SIZE);
+		query.setMaxResults(Constants.PAGE_SIZE);
 		return query.list().size() > 0 ? (List<Poem>)query.list() : null;
 	}
 }

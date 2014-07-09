@@ -37,4 +37,20 @@ public interface IPoemDao {
 	 * @return
 	 */
 	public List<Poem> getPoemByAuthor(String author);
+	
+	/**
+	 * Get poems of a certain author of a certain page number.
+	 * @param author
+	 * @param page
+	 * @return
+	 */
+	public List<Poem> getPoemByAuthorOfPage(String author, int page);
+	
+	/**
+	 * Get poems of a certain page number.
+	 * @param author
+	 * @param page
+	 * @return
+	 */
+	public List<Poem> getPoemOfPage(int page);
 }

@@ -42,4 +42,12 @@ public class PoemService implements IPoemService {
 		logger.info("Get poem by author: " + author);
 		return poemDao.getPoemByAuthor(author);
 	}
+	
+	public List<Poem> getPoemByAuthorOfPage(String author, int page) {
+		return poemDao.getPoemByAuthorOfPage(author, page);
+	}
+	
+	public List<Poem> getPoemOfPage(int page) {
+		return poemDao.getPoemOfPage(page);
+	}
 }
