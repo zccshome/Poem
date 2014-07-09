@@ -8,6 +8,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+/**
+ * 
+ * @author zccshome
+ *
+ */
 @XmlType(propOrder={"poemId", "bookNum", "poemNum", "title", "author", "content"})
 @XmlRootElement(name="poem")
 @Entity

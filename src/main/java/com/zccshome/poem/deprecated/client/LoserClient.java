@@ -13,7 +13,7 @@ import com.zccshome.poem.deprecated.util.CommonsUtil;
 
 public class LoserClient<T> {
 
-	private static final String preUrl = "http://localhost:8080/spring_mvc_test/";
+	private static final String preUrl = "http://localhost:8080/poem/";
 
 	/**
 	 * Add an item to the url with class type T.

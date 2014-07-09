@@ -13,24 +13,57 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.zccshome.poem.bean.poem.Poem;
 import com.zccshome.poem.service.impl.PoemService;
 
+/**
+ * 
+ * @author zccshome
+ *
+ */
 @Controller
-@RequestMapping("/poem")
+@RequestMapping("/tang")
 public class PoemController {
 	@Resource
 	PoemService poemService;
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	/**
+	 * Get a poem by its poem ID.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/id/{id}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody Poem getPoemById(@PathVariable int id) {
 		return poemService.getPoemById(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	/**
+	 * Get all poems.
+	 * @return
+	 */
+	@Deprecated
+	@RequestMapping(value="/all", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody List<Poem> getAllPoems() {
-		return poemService.getAllPoems();
+//		return poemService.getAllPoems();
+		return null;
 	}
 	
-	@RequestMapping(value = "/{bookNum}/{poemNum}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	/**
+	 * Get a poem by its book number and poem number.
+	 * @param bookNum
+	 * @param poemNum
+	 * @return
+	 */
+	@RequestMapping(value = "/num/{bookNum}/{poemNum}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody Poem getPoemByBookAndPoemNum(@PathVariable String bookNum, @PathVariable String poemNum) {
 		return poemService.getPoemByBookAndPoemNum(bookNum, poemNum);
+	}
+	
+	/**
+	 * Get poems of a certain author.
+	 * tomcat conf/server.xml: add "URIEnciding: UTF-8" to support utf8 path variables.
+	 * @param author
+	 * @return
+	 */
+	@RequestMapping(value = "/author/{author}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody List<Poem> getPoemByAuthor(@PathVariable String author) {
+		return poemService.getPoemByAuthor(author);
 	}
 }

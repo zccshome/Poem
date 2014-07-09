@@ -13,6 +13,12 @@ import org.springframework.stereotype.Service;
 
 import com.zccshome.poem.dao.core.IBaseDao;
 
+/**
+ * 
+ * @author zccshome
+ *
+ * @param <T>
+ */
 @Service
 @Transactional
 public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {

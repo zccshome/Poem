@@ -11,6 +11,11 @@ import com.zccshome.poem.bean.poem.Poem;
 import com.zccshome.poem.dao.core.IPoemDao;
 import com.zccshome.poem.service.core.IPoemService;
 
+/**
+ * 
+ * @author zccshome
+ *
+ */
 @Service
 public class PoemService implements IPoemService {
 	@Resource
@@ -31,5 +36,10 @@ public class PoemService implements IPoemService {
 	public Poem getPoemByBookAndPoemNum(String bookNum, String poemNum) {
 		logger.info("Get poem by bookNum: " + bookNum + " and poemNum: " + poemNum);
 		return poemDao.getPoemByBookAndPoemNum(bookNum, poemNum);
+	}
+	
+	public List<Poem> getPoemByAuthor(String author) {
+		logger.info("Get poem by author: " + author);
+		return poemDao.getPoemByAuthor(author);
 	}
 }
