@@ -22,8 +22,8 @@ def getPage(book_num, poem_num):
 	info_result = re.search(r'未检索到唐诗之内容（第[0-9]+卷[0-9]+号）', webcontent)
 	
 	if info_result:
-		book_num = book_num + 1
-		getPage(book_num, 1)
+		#book_num = book_num + 1
+		#getPage(book_num, 1)
 		return
 	
 	info_result = re.search(r'全唐诗第([0-9]+)卷第([0-9]+)首', webcontent)
@@ -31,15 +31,18 @@ def getPage(book_num, poem_num):
 		book_info = info_result.group(1)
 		poem_info = info_result.group(2)
 		print(book_info + ' ' + poem_info)
-	title_result = re.search(u'face="([\u4e00-\u9fa5]+)">([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font>', webcontent.decode("gbk"))
+	title_result = re.search(u'face="([\u4e00-\u9fa5]+)">([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font>', webcontent.decode("gbk", 'ignore'))
 	if title_result:
 		title = title_result.group(2)
 		print(title)
-	author_result = re.search(u'face="([\u4e00-\u9fa5]+)"><u>([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</u>', webcontent.decode("gbk"))
+	author_result = re.search(u'face="([\u4e00-\u9fa5]+)"><u>([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</u>', webcontent.decode("gbk", 'ignore'))
 	if author_result:
 		author = author_result.group(2)
 		print(author)
-	poem_results = re.findall(u'([\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)<br>', webcontent.decode("gbk"))
+	else:
+		author = "佚名".decode("gbk")
+		print(author)
+	poem_results = re.findall(u'([\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)<br>', webcontent.decode("gbk", 'ignore'))
 	poem=''
 	for poem_result in poem_results:
 		poem  = poem + poem_result
@@ -117,5 +120,6 @@ def preservePage(poemClass):
 
 if __name__ == '__main__':
 	print('Hello World!')
-	#for i in rage(900):
-	getPage(1,89)
+	#getPage(50, 17)
+	for i in range(51, 900):
+		getPage(i,1)
