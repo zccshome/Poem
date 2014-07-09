@@ -22,6 +22,7 @@ public class Poem {
 	@Id
 	@GeneratedValue
 	@Column(name = "poemId")
+	@XmlElement(name="poemId")
 	public Integer getPoemId() {
 		return poemId;
 	}

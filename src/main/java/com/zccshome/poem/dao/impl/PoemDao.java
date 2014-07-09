@@ -1,5 +1,7 @@
 package com.zccshome.poem.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,5 +15,9 @@ public class PoemDao extends BaseDao<Poem> implements IPoemDao {
 	public Poem getPoemById(int id) {
 //		Poem ansList = this.getHibernateTemplate().get(Poem.class, 3);
 		return getById(Poem.class, id);
+	}
+	
+	public List<Poem> getAllPoems() {
+		return getAll(Poem.class);
 	}
 }

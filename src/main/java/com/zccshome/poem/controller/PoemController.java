@@ -1,5 +1,7 @@
 package com.zccshome.poem.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -20,5 +22,10 @@ public class PoemController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody Poem getPoemById(@PathVariable int id) {
 		return poemService.getPoemById(id);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody List<Poem> getAllPoems() {
+		return poemService.getAllPoems();
 	}
 }
