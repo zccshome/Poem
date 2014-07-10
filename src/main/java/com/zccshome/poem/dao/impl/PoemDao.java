@@ -67,4 +67,8 @@ public class PoemDao extends BaseDao<Poem> implements IPoemDao {
 		query.setMaxResults(Constants.PAGE_SIZE);
 		return query.list().size() > 0 ? (List<Poem>)query.list() : null;
 	}
+	
+	public int countPoem() {
+		return count(Poem.class);
+	}
 }

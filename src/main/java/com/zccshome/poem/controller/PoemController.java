@@ -66,8 +66,10 @@ public class PoemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/author/{author}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	@Deprecated
 	public @ResponseBody List<Poem> getPoemByAuthor(@PathVariable String author) {
-		return poemService.getPoemByAuthor(author);
+//		return poemService.getPoemByAuthor(author);
+		return null;
 	}
 	
 	/**
@@ -80,13 +82,23 @@ public class PoemController {
 	public @ResponseBody List<Poem> getPoemByAuthorOfPage(@PathVariable String author, @PathVariable int page) {
 		return poemService.getPoemByAuthorOfPage(author, page-1);
 	}
+	
 	/**
 	 * Get poems of a certain page number.
 	 * @param page front part: page start from 1; back part: page start from 0
 	 * @return
 	 */
-	@RequestMapping(value = "/page/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	@RequestMapping(value = "/all/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody List<Poem> getPoemOfPage(@PathVariable int page) {
 		return poemService.getPoemOfPage(page-1);
+	}
+	
+	/**
+	 * Count the number of poems.
+	 * @return
+	 */
+	@RequestMapping(value = "/count", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public int countPoem() {
+		return poemService.countPoem();
 	}
 }

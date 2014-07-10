@@ -50,4 +50,8 @@ public class PoemService implements IPoemService {
 	public List<Poem> getPoemOfPage(int page) {
 		return poemDao.getPoemOfPage(page);
 	}
+	
+	public int countPoem() {
+		return poemDao.countPoem();
+	}
 }

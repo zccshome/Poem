@@ -53,4 +53,10 @@ public interface IPoemDao {
 	 * @return
 	 */
 	public List<Poem> getPoemOfPage(int page);
+	
+	/**
+	 * Count the number of poems.
+	 * @return
+	 */
+	public int countPoem();
 }
