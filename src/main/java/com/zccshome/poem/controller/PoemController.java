@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.zccshome.poem.bean.poem.Poem;
 import com.zccshome.poem.service.impl.PoemService;
@@ -30,6 +32,7 @@ public class PoemController {
 	 * @return
 	 */
 	@RequestMapping(value="/id/{id}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody Poem getPoemById(@PathVariable int id) {
 		return poemService.getPoemById(id);
 	}

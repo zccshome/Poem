@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="name" content="Zhu Chengchun"/>
+	<meta name="security" content="low"/>
+	<title>Poem-zccshome</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"> </script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"> </script>
+	<script type="text/javascript" src="js/jsrender.min.js"> </script>
+	<script type="text/javascript" src="js/main.js"> </script>
+	<script type="text/javascript">
+	</script>
+	<script type="text/x-jsrender" id="poemTemplate">
+        <tr>
+            <td>poemId</td>
+            <td>
+                {{:poemId}}
+            </td>
+        </tr>
+		<tr>
+            <td>bookNum</td>
+            <td>
+                {{:bookNum}}
+            </td>
+        </tr>
+		<tr>
+            <td>poemNum</td>
+            <td>
+                {{:poemNum}}
+            </td>
+        </tr>
+		<tr>
+            <td>title</td>
+            <td>
+                {{:title}}
+            </td>
+        </tr>
+		<tr>
+            <td>author</td>
+            <td>
+                {{:author}}
+            </td>
+        </tr>
+		<tr>
+            <td>content</td>
+            <td>
+                {{:content}}
+            </td>
+        </tr>
+	</script>
+	
+</head>
+<body>
+	<div class="navbar">
+	    <div class="navbar-inner">
+	    	<a class="brand" href="#">Poem</a>
+		    <ul class="nav">
+			    <li class="active"><a href="#">Home</a></li>
+			    <li><a href="#">About Me</a></li>
+			    <li><a href="#">Donation</a></li>
+		    </ul>
+	    </div>
+    </div>
+	<div class="container">
+	    <div class="row">
+	    	<div class="span4">Search by ID:</div>
+		    <div class="span8">
+		    	<input name="searchPoemByIdInput" type="text" placeholder="Type something…">
+	    		</input>
+	    		<input type="button" class="btn" value="Click" onclick="searchPoemById();"></input>
+	    		<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
+		    </div>
+	    </div>
+	    <div class="row">
+			<table class="table">
+				<caption>Poem</caption>
+				<thead>
+					<tr>
+						<th>Key</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+	    </div>
+    </div>
+</body>
+</html>

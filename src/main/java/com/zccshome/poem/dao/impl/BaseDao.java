@@ -62,4 +62,9 @@ public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {
 	public Query createQuery(String hql) {
 		return getSession().createQuery(hql);
 	}
+	
+	public int count(Class<T> c) {
+		Query query = createQuery("select count(*) from " + c.getName());
+		return ((Long)query.list().get(0)).intValue();
+	}
 }

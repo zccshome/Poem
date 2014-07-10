@@ -57,4 +57,11 @@ public interface IBaseDao<T> {
 	 * @return
 	 */
 	public Query createQuery(String hql);
+	
+	/**
+	 * Count the number of objects.
+	 * @param c
+	 * @return
+	 */
+	public int count(Class<T> c);
 }
