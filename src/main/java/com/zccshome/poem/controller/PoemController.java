@@ -73,20 +73,20 @@ public class PoemController {
 	/**
 	 * Get poems of a certain author of a certain page number.
 	 * @param author
-	 * @param page
+	 * @param page front part: page start from 1; back part: page start from 0
 	 * @return
 	 */
 	@RequestMapping(value = "/author/{author}/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody List<Poem> getPoemByAuthorOfPage(@PathVariable String author, @PathVariable int page) {
-		return poemService.getPoemByAuthorOfPage(author, page);
+		return poemService.getPoemByAuthorOfPage(author, page-1);
 	}
 	/**
 	 * Get poems of a certain page number.
-	 * @param page
+	 * @param page front part: page start from 1; back part: page start from 0
 	 * @return
 	 */
 	@RequestMapping(value = "/page/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody List<Poem> getPoemOfPage(@PathVariable int page) {
-		return poemService.getPoemOfPage(page);
+		return poemService.getPoemOfPage(page-1);
 	}
 }

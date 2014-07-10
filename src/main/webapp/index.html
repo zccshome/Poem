@@ -1,18 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="name" content="Zhu Chengchun"/>
-	<meta name="security" content="low"/>
-	<title>Poem-zccshome</title>
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="js/jquery-2.1.1.min.js"> </script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"> </script>
-	<script type="text/javascript" src="js/jsrender.min.js"> </script>
-	<script type="text/javascript" src="js/main.js"> </script>
-	<script type="text/javascript">
-	</script>
-	<script type="text/x-jsrender" id="poemTemplate">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="author" content="zccshome" />
+<title>Poem-zccshome</title>
+<link href="bootstrap2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap2/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"> </script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="js/jsrender.min.js"> </script>
+<script type="text/javascript" src="js/main.js"> </script>
+<script type="text/x-jsrender" id="poemTemplate">
+	{{for #data}}
         <tr>
             <td>poemId</td>
             <td>
@@ -49,31 +48,49 @@
                 {{:content}}
             </td>
         </tr>
+	{{/for}}
 	</script>
-	
 </head>
 <body>
 	<div class="navbar">
-	    <div class="navbar-inner">
-	    	<a class="brand" href="#">Poem</a>
-		    <ul class="nav">
-			    <li class="active"><a href="#">Home</a></li>
-			    <li><a href="#">About Me</a></li>
-			    <li><a href="#">Donation</a></li>
-		    </ul>
-	    </div>
-    </div>
+		<div class="navbar-inner">
+			<a class="brand" href="#">Poem</a>
+			<ul class="nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">About Me</a></li>
+				<li><a href="#">Donation</a></li>
+			</ul>
+		</div>
+	</div>
+	
 	<div class="container">
-	    <div class="row">
-	    	<div class="span4">Search by ID:</div>
-		    <div class="span8">
-		    	<input name="searchPoemByIdInput" type="text" placeholder="Type something…">
-	    		</input>
-	    		<input type="button" class="btn" value="Click" onclick="searchPoemById();"></input>
-	    		<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
-		    </div>
-	    </div>
-	    <div class="row">
+		<div class="row">
+			<div class="span4">Search by ID:</div>
+			<div class="span8">
+				<input name="searchPoemByIdInput" type="text" placeholder="Type poem ID..."></input>
+				<input type="button" class="btn" value="Click" onclick="searchPoemById();"></input>
+				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span4">Search by book number and poem number:</div>
+			<div class="span8">
+				<input name="searchPoemByBookNumInput" type="text" placeholder="Type book number..."></input>
+				<input name="searchPoemByPoemNumInput" type="text" placeholder="Type poem number..."></input>
+				<input type="button" class="btn" value="Click" onclick="searchPoemByBookAndPoemNumber();"></input>
+				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span4">Search by author:</div>
+			<div class="span8">
+				<input name="searchPoemByAuthorInput" type="text" placeholder="Type author..."></input>
+				<input type="button" class="btn" value="Click" onclick="searchPoemByAuthor(1);"></input>
+				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
+			</div>
+		</div>
+		<input name="searchType" type="hidden"></input>
+		<div class="row">
 			<table class="table">
 				<caption>Poem</caption>
 				<thead>
@@ -83,10 +100,25 @@
 					</tr>
 				</thead>
 				<tbody>
-					
+
 				</tbody>
 			</table>
-	    </div>
-    </div>
+		</div>
+		<div class="row">
+			<div class="pagination">
+				<ul>
+					<li><a href="#">First</a></li>
+					<li><a href="#">Prev</a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#">Next</a></li>
+					<li><a href="#">Last</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
