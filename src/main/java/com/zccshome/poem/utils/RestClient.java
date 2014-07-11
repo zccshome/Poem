@@ -1,4 +1,4 @@
-package com.zccshome.poem.deprecated.client;
+package com.zccshome.poem.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,24 +9,22 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
-import com.zccshome.poem.deprecated.util.CommonsUtil;
+public class RestClient<T> {
 
-public class LoserClient<T> {
-
-	private static final String preUrl = "http://localhost:8080/poem/";
+	private static final String preUrl = "http://localhost:8080/poem/tang/";
 
 	/**
 	 * Add an item to the url with class type T.
 	 * @param item
 	 * @param url
-	 * @param dataType
+	 * @param mediaType
 	 * @return
 	 */
-	public String postJson(T item, String url, String dataType) {
+	public String postJson(T item, String url, MediaType mediaType) {
 		url = preUrl + url;
 		HttpHeaders requestHeaders = new HttpHeaders();
 		List<MediaType> mediaTypes = new ArrayList<MediaType>();
-		mediaTypes.add(CommonsUtil.converDataType(dataType));
+		mediaTypes.add(mediaType);
 		requestHeaders.setAccept(mediaTypes);
 		HttpEntity<T> requestEntity = new HttpEntity<T>(item, requestHeaders);
 
@@ -39,13 +37,14 @@ public class LoserClient<T> {
 	 * Update an item to the url with class type T.
 	 * @param item
 	 * @param url
+	 * @param mediaType
 	 * @return
 	 */
-	public String putJson(T item, String url, String dataType) {
+	public String putJson(T item, String url, MediaType mediaType) {
 		url = preUrl + url;
 		HttpHeaders headers = new HttpHeaders();
 		List<MediaType> acceptableMediaTypes = new ArrayList<MediaType>();
-		acceptableMediaTypes.add(CommonsUtil.converDataType(dataType));
+		acceptableMediaTypes.add(mediaType);
 		headers.setAccept(acceptableMediaTypes);
 
 		HttpEntity<T> entity = new HttpEntity<T>(item, headers);
@@ -57,15 +56,15 @@ public class LoserClient<T> {
 	 * Get an item from the url with class type T.
 	 * @param url
 	 * @param id
-	 * @param dataType
+	 * @param mediaType
 	 * @param c
 	 * @return
 	 */
-	public T getjson(String url, String id, String dataType, Class<T> c) {
+	public T getjson(String url, String id, MediaType mediaType, Class<T> c) {
 		url = preUrl + url + id;
 		HttpHeaders requestHeaders = new HttpHeaders();
 		List<MediaType> mediaTypes = new ArrayList<MediaType>();
-		mediaTypes.add(CommonsUtil.converDataType(dataType));
+		mediaTypes.add(mediaType);
 		requestHeaders.setAccept(mediaTypes);
 		HttpEntity<T> requestEntity = new HttpEntity<T>(requestHeaders);
 
