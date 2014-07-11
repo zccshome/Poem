@@ -1,7 +1,3 @@
-$(document).ready(function() {
-	setPagination(1);
-});
-
 var PAGESIZE = 10;
 
 function firstPage() {
@@ -35,11 +31,16 @@ function setPagination(page) {
 			var author = $("input[name='searchPoemByAuthorInput']").val();
 			total = countPoem("count/"+author);
 			break;
+		default:
+			total = 1;
+			break;
 	}
 	var pageNum = Math.ceil(total / PAGESIZE);
 	
 	if(page == -1)
 		page = pageNum;
+	
+	searchPoem(page);
 	
 	if(page <= 1) {
 		$(".prevPage").addClass("disabled");
@@ -71,8 +72,6 @@ function setPagination(page) {
 		$(".next2Page a").html(page+2);
 	if(page-1 <= pageNum)
 		$(".next1Page a").html(page+1);
-	
-	searchPoem(page);
 }
 
 function clearPagination() {

@@ -9,8 +9,8 @@
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"> </script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"> </script>
 <script type="text/javascript" src="js/jsrender.min.js"> </script>
-<script type="text/javascript" src="js/main.js"> </script>
 <script type="text/javascript" src="js/page.js"> </script>
+<script type="text/javascript" src="js/main.js"> </script>
 <script type="text/x-jsrender" id="poemTemplate">
 	{{for #data}}
         <tr>
@@ -69,7 +69,7 @@
 			<div class="span4">Search by ID:</div>
 			<div class="span8">
 				<input name="searchPoemByIdInput" type="text" placeholder="Type poem ID..."></input>
-				<input type="button" class="btn" value="Click" onclick="searchPoemById();"></input>
+				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('id');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
@@ -78,7 +78,7 @@
 			<div class="span8">
 				<input name="searchPoemByBookNumInput" type="text" placeholder="Type book number..."></input>
 				<input name="searchPoemByPoemNumInput" type="text" placeholder="Type poem number..."></input>
-				<input type="button" class="btn" value="Click" onclick="searchPoemByBookAndPoemNumber();"></input>
+				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('num');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
@@ -86,14 +86,14 @@
 			<div class="span4">Search by author:</div>
 			<div class="span8">
 				<input name="searchPoemByAuthorInput" type="text" placeholder="Type author..."></input>
-				<input type="button" class="btn" value="Click" onclick="searchPoemByAuthor(1);"></input>
+				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('author');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
 		<div class="row">
 			<div class="span4">Search all:</div>
 			<div class="span8">
-				<input type="button" class="btn" value="Click" onclick="searchPoemAll(1);"></input>
+				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('all');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
