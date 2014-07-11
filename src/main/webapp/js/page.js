@@ -1,26 +1,24 @@
 var PAGESIZE = 10;
 
 function firstPage() {
-	setPagination(1);
+	return setPagination(1);
 }
 
 function prevPage(num) {
 	var currPage = $(".currPage a").html();
-	setPagination(parseInt(currPage)-num);
+	return setPagination(parseInt(currPage)-num);
 }
 
 function nextPage(num) {
 	var currPage = $(".currPage a").html();
-	setPagination(parseInt(currPage)+num);
+	return setPagination(parseInt(currPage)+num);
 }
 
 function lastPage() {
-	setPagination(-1);
+	return setPagination(-1);
 }
 
 function setPagination(page) {
-	clearTable();
-	clearPagination();
 	var searchType = $("input[name='searchType']").val();
 	var total = 0;
 	switch(searchType) {
@@ -39,6 +37,12 @@ function setPagination(page) {
 	
 	if(page == -1)
 		page = pageNum;
+	
+	if(page < 1 || page > pageNum)
+		return false;
+	
+	clearTable();
+	clearPagination();
 	
 	searchPoem(page);
 	
@@ -72,12 +76,20 @@ function setPagination(page) {
 		$(".next2Page a").html(page+2);
 	if(page-1 <= pageNum)
 		$(".next1Page a").html(page+1);
+	
+	return true;
 }
 
 function clearPagination() {
 	$(".pagination li").removeClass("disabled");
 	$(".pagination li").show();
 	$(".currPage").addClass("disabled");
+	$(".prev2Page a").html("");
+	$(".prev1Page a").html("");
+	$(".currPage a").html("");
+	$(".next1Page a").html("");
+	$(".next2Page a").html("");
+	
 }
 
 function countPoem(suffixURL) {

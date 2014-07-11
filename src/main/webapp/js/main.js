@@ -66,5 +66,5 @@ function clearTable() {
 function setSearchTypeAndSearch(searchType) {
 	// all author id num
 	$("input[name='searchType']").val(searchType);
-	setPagination(1);
+	return setPagination(1);
 }

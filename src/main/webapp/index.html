@@ -69,7 +69,7 @@
 			<div class="span4">Search by ID:</div>
 			<div class="span8">
 				<input name="searchPoemByIdInput" type="text" placeholder="Type poem ID..."></input>
-				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('id');"></input>
+				<input type="button" class="btn" value="Click" onclick="return setSearchTypeAndSearch('id');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
@@ -78,7 +78,7 @@
 			<div class="span8">
 				<input name="searchPoemByBookNumInput" type="text" placeholder="Type book number..."></input>
 				<input name="searchPoemByPoemNumInput" type="text" placeholder="Type poem number..."></input>
-				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('num');"></input>
+				<input type="button" class="btn" value="Click" onclick="return setSearchTypeAndSearch('num');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
@@ -86,14 +86,14 @@
 			<div class="span4">Search by author:</div>
 			<div class="span8">
 				<input name="searchPoemByAuthorInput" type="text" placeholder="Type author..."></input>
-				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('author');"></input>
+				<input type="button" class="btn" value="Click" onclick="return setSearchTypeAndSearch('author');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
 		<div class="row">
 			<div class="span4">Search all:</div>
 			<div class="span8">
-				<input type="button" class="btn" value="Click" onclick="setSearchTypeAndSearch('all');"></input>
+				<input type="button" class="btn" value="Click" onclick="return setSearchTypeAndSearch('all');"></input>
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
@@ -115,17 +115,17 @@
 		<div class="row">
 			<div class="pagination">
 				<ul>
-					<li class="firstPage"><a onclick="firstPage();">First</a></li>
-					<li class="prevPage" onclick="prevPage(1);"><a>Prev</a></li>
-					<li class="prev3Page" onclick="prevPage(3);"><a>...</a></li>
-					<li class="prev2Page" onclick="prevPage(2);"><a></a></li>
-					<li class="prev1Page" onclick="prevPage(1);"><a></a></li>
+					<li class="firstPage"><a onclick="return firstPage();">First</a></li>
+					<li class="prevPage" onclick="return prevPage(1);"><a>Prev</a></li>
+					<li class="prev3Page" onclick="return prevPage(3);"><a>...</a></li>
+					<li class="prev2Page" onclick="return prevPage(2);"><a></a></li>
+					<li class="prev1Page" onclick="return prevPage(1);"><a></a></li>
 					<li class="currPage" class="disabled"><a></a></li>
-					<li class="next1Page" onclick="nextPage(1);"><a></a></li>
-					<li class="next2Page" onclick="nextPage(2);"><a></a></li>
-					<li class="next3Page" onclick="nextPage(3);"><a>...</a></li>
-					<li class="nextPage" onclick="nextPage(1);"><a>Next</a></li>
-					<li class="lastPage" onclick="lastPage();"><a>Last</a></li>
+					<li class="next1Page" onclick="return nextPage(1);"><a></a></li>
+					<li class="next2Page" onclick="return nextPage(2);"><a></a></li>
+					<li class="next3Page" onclick="return nextPage(3);"><a>...</a></li>
+					<li class="nextPage" onclick="return nextPage(1);"><a>Next</a></li>
+					<li class="lastPage" onclick="return lastPage();"><a>Last</a></li>
 				</ul>
 			</div>
 		</div>
