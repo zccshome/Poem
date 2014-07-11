@@ -1,7 +1,12 @@
 $(document).ready(function() {
+	// The first time we search by search type all.
 	setSearchTypeAndSearch("all");
 });
 
+/**
+ * Search poem of a certain page, getting search type from hidden input.
+ * @param page
+ */
 function searchPoem(page) {
 	var searchType = $("input[name='searchType']").val();
 	switch(searchType) {
@@ -20,26 +25,45 @@ function searchPoem(page) {
 	}
 }
 
+/**
+ * Search by ID.
+ */
 function searchPoemById() {
 	var value = $("input[name='searchPoemByIdInput']").val();
 	search("/id/"+value, 0);
 }
 
+/**
+ * Search by book and poem number.
+ */
 function searchPoemByBookAndPoemNumber() {
 	var bookNum = $("input[name='searchPoemByBookNumInput']").val();
 	var poemNum = $("input[name='searchPoemByPoemNumInput']").val();
 	search("/num/"+bookNum+"/"+poemNum, 0);
 }
 
+/**
+ * Search by author of a certain page.
+ * @param page
+ */
 function searchPoemByAuthor(page) {
 	var author = $("input[name='searchPoemByAuthorInput']").val();
 	search("/author/"+author, page);
 }
 
+/**
+ * Search all of a ceratin page.
+ * @param page
+ */
 function searchPoemAll(page) {
 	search("/all", page);
 }
 
+/**
+ * The function sends an AJAX request to the server.
+ * @param suffixURL
+ * @param page
+ */
 function search(suffixURL, page) {
 	if(page == 0)
 		url = "tang"+suffixURL;
@@ -58,11 +82,19 @@ function search(suffixURL, page) {
 	});
 }
 
+/**
+ * Clear the table.
+ */
 function clearTable() {
 	$("tbody").empty();
 	$(".table").hide();
 }
 
+/**
+ * HTML pages search by calling this function.
+ * @param searchType
+ * @returns
+ */
 function setSearchTypeAndSearch(searchType) {
 	// all author id num
 	$("input[name='searchType']").val(searchType);

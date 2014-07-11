@@ -1,23 +1,47 @@
+// Page size is 10, ths same as the server.
 var PAGESIZE = 10;
 
+/**
+ * The first page.
+ * @returns
+ */
 function firstPage() {
 	return setPagination(1);
 }
 
+/**
+ * The previous n page from the current page, where n is num.
+ * @param num
+ * @returns
+ */
 function prevPage(num) {
 	var currPage = $(".currPage a").html();
 	return setPagination(parseInt(currPage)-num);
 }
 
+/**
+ * The next n page from the current page, where n is num.
+ * @param num
+ * @returns
+ */
 function nextPage(num) {
 	var currPage = $(".currPage a").html();
 	return setPagination(parseInt(currPage)+num);
 }
 
+/**
+ * The last page.
+ * @returns
+ */
 function lastPage() {
 	return setPagination(-1);
 }
 
+/**
+ * Set pagination buttons.
+ * @param page
+ * @returns {Boolean}
+ */
 function setPagination(page) {
 	var searchType = $("input[name='searchType']").val();
 	var total = 0;
@@ -80,6 +104,9 @@ function setPagination(page) {
 	return true;
 }
 
+/**
+ * Clear pagination buttons.
+ */
 function clearPagination() {
 	$(".pagination li").removeClass("disabled");
 	$(".pagination li").show();
@@ -92,6 +119,11 @@ function clearPagination() {
 	
 }
 
+/**
+ * Count the total number of poems.
+ * @param suffixURL
+ * @returns {Number}
+ */
 function countPoem(suffixURL) {
 	var count = 0;
 	$.ajax({
