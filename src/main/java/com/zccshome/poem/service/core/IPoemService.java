@@ -64,4 +64,25 @@ public interface IPoemService {
 	 * @return
 	 */
 	public int countPoemOfAuthor(String author);
+	
+	/**
+	 * Get poems of a certain matching pattern.
+	 * @param pattern
+	 * @return
+	 */
+	public List<Poem> getPoemOfMatchPattern(String pattern);
+	
+	/**
+	 * Get poems of a certain matching pattern of a certain page.
+	 * @param pattern
+	 * @return
+	 */
+	public List<Poem> getPoemOfMatchPatternOfPage(String pattern, int page);
+	
+	/**
+	 * Count the number of poems of a certain matching pattern.
+	 * @param pattern
+	 * @return
+	 */
+	public int countPoemOfMatchPattern(String pattern);
 }

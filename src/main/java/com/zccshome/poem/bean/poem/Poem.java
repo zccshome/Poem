@@ -24,6 +24,21 @@ public class Poem {
 	private String author;
 	private String content;
 
+	public Poem() {
+		super();
+	}
+
+	public Poem(Integer poemId, String bookNum, String poemNum, String title,
+			String author, String content) {
+		super();
+		this.poemId = poemId;
+		this.bookNum = bookNum;
+		this.poemNum = poemNum;
+		this.title = title;
+		this.author = author;
+		this.content = content;
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(name = "poemId")

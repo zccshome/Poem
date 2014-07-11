@@ -97,6 +97,14 @@
 				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
 			</div>
 		</div>
+		<div class="row">
+			<div class="span4">Search by pattern:</div>
+			<div class="span8">
+				<input name="searchPoemByPatternInput" type="text" placeholder="Type pattern..."></input>
+				<input type="button" class="btn" value="Click" onclick="return setSearchTypeAndSearch('pattern');"></input>
+				<input type="button" class="btn" value="Clear" onclick="clearTable();"></input>
+			</div>
+		</div>
 		<input name="searchType" type="hidden"></input>
 		<div class="row">
 			<table class="table">

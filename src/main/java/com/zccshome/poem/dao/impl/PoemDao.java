@@ -1,5 +1,6 @@
 package com.zccshome.poem.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -76,5 +77,50 @@ public class PoemDao extends BaseDao<Poem> implements IPoemDao {
 		Query query = createQuery("select count(*) from Poem where author = ?");
 		query.setString(0, author);
 		return ((Long)query.list().get(0)).intValue();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Poem> getPoemOfMatchPattern(String pattern) {
+		Query query = getSession().createSQLQuery("select * from poem where poemContent REGEXP '"+pattern+"'");
+		List<Poem> poemList = new ArrayList<Poem>();
+		List<Object[]> ansList = query.list();
+		for(int i = 0; i < ansList.size(); i++) {
+			Object[] temp = ansList.get(i);
+			Poem poem = new Poem(Integer.parseInt(String.valueOf(temp[0])),
+					String.valueOf(temp[1]), 
+					String.valueOf(temp[2]),
+					String.valueOf(temp[3]),
+					String.valueOf(temp[4]),
+					String.valueOf(temp[5]));
+			poemList.add(poem);
+		}
+		return poemList;
+	}
+	
+	public int countPoemOfMatchPattern(String pattern) {
+		Query query = getSession().createSQLQuery("select count(*) from poem where poemContent REGEXP '"+pattern+"'");
+		return Integer.parseInt(String.valueOf(query.list().get(0)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Poem> getPoemOfMatchPatternOfPage(String pattern, int page) {
+		int size = countPoemOfMatchPattern(pattern);
+		page = (size > page * Constants.PAGE_SIZE) ? page : size / Constants.PAGE_SIZE;
+		
+		Query query = getSession().createSQLQuery("select * from poem where poemContent REGEXP '"+pattern+
+				"' limit "+page * Constants.PAGE_SIZE + ", " + Constants.PAGE_SIZE);
+		List<Poem> poemList = new ArrayList<Poem>();
+		List<Object[]> ansList = query.list();
+		for(int i = 0; i < ansList.size(); i++) {
+			Object[] temp = ansList.get(i);
+			Poem poem = new Poem(Integer.parseInt(String.valueOf(temp[0])),
+					String.valueOf(temp[1]), 
+					String.valueOf(temp[2]),
+					String.valueOf(temp[3]),
+					String.valueOf(temp[4]),
+					String.valueOf(temp[5]));
+			poemList.add(poem);
+		}
+		return poemList;
 	}
 }

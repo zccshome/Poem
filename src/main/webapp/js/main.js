@@ -22,6 +22,9 @@ function searchPoem(page) {
 		case "num":
 			searchPoemByBookAndPoemNumber();
 			break;
+		case "pattern":
+			searchPoemByPattern(page);
+			break;
 	}
 }
 
@@ -51,6 +54,24 @@ function searchPoemByAuthor(page) {
 	search("/author/"+author, page);
 }
 
+function searchPoemByPattern(page) {
+	var pattern = $("input[name='searchPoemByPatternInput']").val();
+	url = "tang/pattern/"+page;
+	$.ajax({
+		url: url,
+		type: "GET",
+		contentType: "application/json",
+		data: {"pattern": pattern},
+		dataType:"json",
+		success: function(poem) {
+			var html  = $("#poemTemplate").render(poem);
+			$("tbody").append(html);
+			$(".table").show();
+		}
+	});
+	
+}
+
 /**
  * Search all of a ceratin page.
  * @param page
@@ -69,6 +90,7 @@ function search(suffixURL, page) {
 		url = "tang"+suffixURL;
 	else
 		url = "tang"+suffixURL+"/"+page;
+	
 	$.ajax({
 		url: url,
 		type: "GET",
@@ -96,7 +118,7 @@ function clearTable() {
  * @returns
  */
 function setSearchTypeAndSearch(searchType) {
-	// all author id num
+	// all author id num pattern
 	$("input[name='searchType']").val(searchType);
 	return setPagination(1);
 }

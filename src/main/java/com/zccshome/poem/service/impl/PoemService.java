@@ -58,4 +58,16 @@ public class PoemService implements IPoemService {
 	public int countPoemOfAuthor(String author) {
 		return poemDao.countPoemOfAuthor(author);
 	}
+	
+	public List<Poem> getPoemOfMatchPattern(String pattern) {
+		return poemDao.getPoemOfMatchPattern(pattern);
+	}
+	
+	public int countPoemOfMatchPattern(String pattern) {
+		return poemDao.countPoemOfMatchPattern(pattern);
+	}
+	
+	public List<Poem> getPoemOfMatchPatternOfPage(String pattern, int page) {
+		return poemDao.getPoemOfMatchPatternOfPage(pattern, page);
+	}
 }

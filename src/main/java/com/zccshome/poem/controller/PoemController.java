@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -97,7 +98,7 @@ public class PoemController {
 	 * Count the number of poems.
 	 * @return
 	 */
-	@RequestMapping(value = "/count", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	@RequestMapping(value = "/count/all", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody int countPoem() {
 		System.out.println(poemService.countPoem());
 		return poemService.countPoem();
@@ -107,8 +108,40 @@ public class PoemController {
 	 * Count the number of poems of a certain author.
 	 * @return
 	 */
-	@RequestMapping(value = "/count/{author}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	@RequestMapping(value = "/count/author/{author}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
 	public @ResponseBody int countPoemOfAuthor(@PathVariable String author) {
 		return poemService.countPoemOfAuthor(author);
+	}
+	
+	/**
+	 * Get poems of a certain matching pattern.
+	 * @param pattern
+	 * @return
+	 */
+	@RequestMapping(value = "/pattern", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	@Deprecated
+	public @ResponseBody List<Poem> getPoemOfMatchPattern(@RequestParam String pattern) {
+//		return poemService.getPoemOfMatchPattern(pattern);
+		return null;
+	}
+	
+	/**
+	 * Count the number of poems of a certain matching pattern.
+	 * @param pattern
+	 * @return
+	 */
+	@RequestMapping(value = "/count/pattern", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody int countPoemOfMatchPattern(@RequestParam String pattern) {
+		return poemService.countPoemOfMatchPattern(pattern);
+	}
+	
+	/**
+	 * Get poems of a certain matching pattern of a certain page.
+	 * @param pattern
+	 * @return
+	 */
+	@RequestMapping(value = "/pattern/{page}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody List<Poem> getPoemOfMatchPatternOfPage(@RequestParam String pattern, @PathVariable int page) {
+		return poemService.getPoemOfMatchPatternOfPage(pattern, page-1);
 	}
 }

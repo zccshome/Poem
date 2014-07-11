@@ -47,11 +47,15 @@ function setPagination(page) {
 	var total = 0;
 	switch(searchType) {
 		case "all":
-			total = countPoem("count");
+			total = countPoem("count/all/");
 			break;
 		case "author":
 			var author = $("input[name='searchPoemByAuthorInput']").val();
-			total = countPoem("count/"+author);
+			total = countPoem("count/author/"+author);
+			break;
+		case "pattern":
+			var pattern = $("input[name='searchPoemByPatternInput']").val();
+			total = countPoem("count/pattern/", pattern);
 			break;
 		default:
 			total = 1;
@@ -131,6 +135,27 @@ function countPoem(suffixURL) {
 		type: "GET",
 		async: false,
 		contentType: "application/json",
+		dataType:"json",
+		success: function(data) {
+			count = data;
+		}
+	});
+	return count;
+}
+
+/**
+ * Count the total number of poems.
+ * @param suffixURL
+ * @returns {Number}
+ */
+function countPoem(suffixURL, pattern) {
+	var count = 0;
+	$.ajax({
+		url: "tang/"+suffixURL,
+		type: "GET",
+		async: false,
+		contentType: "application/json",
+		data: {"pattern": pattern},
 		dataType:"json",
 		success: function(data) {
 			count = data;
