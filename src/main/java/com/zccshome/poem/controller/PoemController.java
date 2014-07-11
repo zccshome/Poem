@@ -98,7 +98,17 @@ public class PoemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/count", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
-	public int countPoem() {
+	public @ResponseBody int countPoem() {
+		System.out.println(poemService.countPoem());
 		return poemService.countPoem();
+	}
+	
+	/**
+	 * Count the number of poems of a certain author.
+	 * @return
+	 */
+	@RequestMapping(value = "/count/{author}", method=RequestMethod.GET, headers="Accept=application/xml, application/json")
+	public @ResponseBody int countPoemOfAuthor(@PathVariable String author) {
+		return poemService.countPoemOfAuthor(author);
 	}
 }

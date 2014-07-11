@@ -54,4 +54,8 @@ public class PoemService implements IPoemService {
 	public int countPoem() {
 		return poemDao.countPoem();
 	}
+	
+	public int countPoemOfAuthor(String author) {
+		return poemDao.countPoemOfAuthor(author);
+	}
 }

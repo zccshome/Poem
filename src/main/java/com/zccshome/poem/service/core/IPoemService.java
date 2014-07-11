@@ -58,4 +58,10 @@ public interface IPoemService {
 	 * @return
 	 */
 	public int countPoem();
+	
+	/**
+	 * Count the number of poems of a certain author.
+	 * @return
+	 */
+	public int countPoemOfAuthor(String author);
 }

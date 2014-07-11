@@ -71,4 +71,10 @@ public class PoemDao extends BaseDao<Poem> implements IPoemDao {
 	public int countPoem() {
 		return count(Poem.class);
 	}
+	
+	public int countPoemOfAuthor(String author) {
+		Query query = createQuery("select count(*) from Poem where author = ?");
+		query.setString(0, author);
+		return ((Long)query.list().get(0)).intValue();
+	}
 }

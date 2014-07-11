@@ -10,6 +10,7 @@
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"> </script>
 <script type="text/javascript" src="js/jsrender.min.js"> </script>
 <script type="text/javascript" src="js/main.js"> </script>
+<script type="text/javascript" src="js/page.js"> </script>
 <script type="text/x-jsrender" id="poemTemplate">
 	{{for #data}}
         <tr>
@@ -114,15 +115,17 @@
 		<div class="row">
 			<div class="pagination">
 				<ul>
-					<li><a href="#">First</a></li>
-					<li><a href="#">Prev</a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#">Next</a></li>
-					<li><a href="#">Last</a></li>
+					<li class="firstPage"><a onclick="firstPage();">First</a></li>
+					<li class="prevPage" onclick="prevPage(1);"><a>Prev</a></li>
+					<li class="prev3Page" onclick="prevPage(3);"><a>...</a></li>
+					<li class="prev2Page" onclick="prevPage(2);"><a></a></li>
+					<li class="prev1Page" onclick="prevPage(1);"><a></a></li>
+					<li class="currPage" class="disabled"><a></a></li>
+					<li class="next1Page" onclick="nextPage(1);"><a></a></li>
+					<li class="next2Page" onclick="nextPage(2);"><a></a></li>
+					<li class="next3Page" onclick="nextPage(3);"><a>...</a></li>
+					<li class="nextPage" onclick="nextPage(1);"><a>Next</a></li>
+					<li class="lastPage" onclick="lastPage();"><a>Last</a></li>
 				</ul>
 			</div>
 		</div>

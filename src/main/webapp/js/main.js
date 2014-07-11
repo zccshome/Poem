@@ -1,6 +1,18 @@
 $(document).ready(function() {
-	clearTable();
+//	clearTable();
+//	searchPoemAll(1);
 });
+
+function searchPoem(page) {
+	var searchType = $("input[name='searchType']").val();
+	switch(searchType) {
+		case "all":
+			searchPoemAll(page);
+			break;
+		case "author":
+			searchPoemByAuthor(page);
+	}
+}
 
 function searchPoemById() {
 	var value = $("input[name='searchPoemByIdInput']").val();
