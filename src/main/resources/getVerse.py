@@ -12,8 +12,7 @@ class VerseClass:
 		return self.title + ' ' + self.subtitle + ' ' + self.author + ' ' + self.content1 + ' ' + self.content2
 
 def getVerse():
-	#for i in range(1, 1486):
-	for i in range(2, 1486):
+	for i in range(1, 1486):
 		pageNum = str(i).zfill(4)
 		req = urllib2.Request('http://www.guoxue.com/qsc/'+pageNum+'.htm', headers={'User-Agent' : "Magic Browser"})
 		webpage= urllib2.urlopen(req)
@@ -25,15 +24,15 @@ def getVerse():
 			author = author_result.group(1)
 			author = author.replace('&nbsp;', '')
 			print(author)
-		
+		'''
 		verses_result = re.findall(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+</font><span><font size="2" color="#FF00FF">[\u0020-\u007f_\u00B7_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+</font></span></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+\r\n</font><p></p>\r\n&nbsp;&nbsp;&nbsp;&nbsp;[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+', webcontent.decode('gbk', 'ignore'))
 		
 		for verse in verses_result:
 			verse_result = re.search(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font><span><font size="2" color="#FF00FF">([\u0020-\u007f_\u00B7_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font></span></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)\r\n</font><p></p>\r\n&nbsp;&nbsp;&nbsp;&nbsp;([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)', verse)
 			title = verse_result.group(1)
-			#print(title)
+			print(title)
 			subtitle = verse_result.group(2)
-			print(subtitle)
+			#print(subtitle)
 			
 			content1 = verse_result.group(3)
 			#print(content1)
@@ -48,9 +47,9 @@ def getVerse():
 		for verse in verses_result:
 			verse_result = re.search(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)\r\n</font><p></p>\r\n&nbsp;&nbsp;&nbsp;&nbsp;([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)', verse)
 			title = verse_result.group(1)
-			#print(title)
+			print(title)
 			subtitle = ''
-			print(subtitle)
+			#print(subtitle)
 			
 			content1 = verse_result.group(2)
 			#print(content1)
@@ -59,7 +58,41 @@ def getVerse():
 			
 			verse = VerseClass(title, subtitle, author, content1, content2)
 			preservePage(verse)
+		'''
+		verses_result = re.findall(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+</font></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+\r\n</font><p></p>\r\n</ul><p></p>', webcontent.decode('gbk', 'ignore'))
+		
+		for verse in verses_result:
+			verse_result = re.search(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)\r\n</font><p></p>\r\n</ul><p></p>', verse)
+			title = verse_result.group(1)
+			print(title)
+			subtitle = ''
+			#print(subtitle)
 			
+			content1 = verse_result.group(2)
+			#print(content1)
+			content2 = ''
+			#print(content2)
+			
+			verse = VerseClass(title, subtitle, author, content1, content2)
+			preservePage(verse)
+		
+		verses_result = re.findall(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+</font><span><font size="2" color="#FF00FF">[\u0020-\u007f_\u00B7_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+</font></span></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;[\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+\r\n</font><p></p>\r\n</ul><p></p>', webcontent.decode('gbk', 'ignore'))
+		
+		for verse in verses_result:
+			verse_result = re.search(u'<p align="center"><font face="\u9ed1\u4f53" size="3" color="#000080">([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font><span><font size="2" color="#FF00FF">([\u0020-\u007f_\u00B7_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)</font></span></font></font></p>\r\n<ul>\r\n&nbsp;&nbsp;&nbsp;&nbsp;([\u0020-\u007f_\u4e00-\u9fff_\uff01-\uffee_\u3002_\u3001_\u2026_\u201d_\u201c_\u2019_\u2018_\u300a_\u300b]+)\r\n</font><p></p>\r\n</ul><p></p>', verse)
+			title = verse_result.group(1)
+			print(title)
+			subtitle = verse_result.group(2)
+			print(subtitle)
+			
+			content1 = verse_result.group(3)
+			#print(content1)
+			content2 = ''
+			#print(content2)
+			
+			verse = VerseClass(title, subtitle, author, content1, content2)
+			preservePage(verse)
+		
 def preservePage(verseClass):
 	try:
 		conn = MySQLdb.connect(host='localhost',user='root',passwd='123',db='poem', charset='utf8')
