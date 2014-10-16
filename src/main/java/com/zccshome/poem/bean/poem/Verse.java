@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author zccshome
  *
  */
-@XmlType(propOrder={"verseId", "title", "subtitle", "author", "content1", "content2"})
+@XmlType(propOrder={"verseId", "title", "subtitle", "author", "xu", "content1", "content2"})
 @XmlRootElement(name="verse")
 @Entity
 
@@ -22,24 +22,27 @@ public class Verse {
 	private String title;
 	private String subtitle;
 	private String author;
+	private String xu;
 	private String content1;
 	private String content2;
 	
 	public Verse() {
 		super();
 	}
-
+	
 	public Verse(Integer verseId, String title, String subtitle, String author,
-			String content1, String content2) {
+			String xu, String content1, String content2) {
 		super();
 		this.verseId = verseId;
 		this.title = title;
 		this.subtitle = subtitle;
 		this.author = author;
+		this.xu = xu;
 		this.content1 = content1;
 		this.content2 = content2;
 	}
-	
+
+
 	@Id
 	@GeneratedValue
 	@Column(name = "verseId")
@@ -79,6 +82,15 @@ public class Verse {
 		this.author = author;
 	}
 
+	@Column(name="xu")
+	public String getXu() {
+		return xu;
+	}
+
+	public void setXu(String xu) {
+		this.xu = xu;
+	}
+
 	@Column(name="content1", nullable = false)
 	public String getContent1() {
 		return content1;
@@ -100,7 +112,7 @@ public class Verse {
 	@Override
 	public String toString() {
 		return "Verse [verseId=" + verseId + ", title=" + title + ", subtitle="
-				+ subtitle + ", author=" + author + ", content1=" + content1
-				+ ", content2=" + content2 + "]";
+				+ subtitle + ", author=" + author + ", xu=" + xu
+				+ ", content1=" + content1 + ", content2=" + content2 + "]";
 	}
 }

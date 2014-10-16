@@ -86,7 +86,8 @@ public class VerseDao extends BaseDao<Verse> implements IVerseDao {
 					String.valueOf(temp[2]),
 					String.valueOf(temp[3]),
 					String.valueOf(temp[4]),
-					String.valueOf(temp[5]));
+					String.valueOf(temp[5]),
+					String.valueOf(temp[6]));
 			verseList.add(verse);
 		}
 		return verseList;
@@ -109,7 +110,8 @@ public class VerseDao extends BaseDao<Verse> implements IVerseDao {
 					String.valueOf(temp[2]),
 					String.valueOf(temp[3]),
 					String.valueOf(temp[4]),
-					String.valueOf(temp[5]));
+					String.valueOf(temp[5]),
+					String.valueOf(temp[6]));
 			verseList.add(verse);
 		}
 		return verseList;
