@@ -1,0 +1,5 @@
+select UUID() as uuid, poemTitle, poemAuthor, poemContent from poem
+union
+select UUID() as uuid, CONCAT(title, subtitle) as poemTitle, author as poemAuthor, CONCAT(IFNULL(xu,""), IFNULL(content1,""), IFNULL(content2,"")) as poemContent from verse
+union
+select UUID() as uuid, poemTitle, poemAuthor, poemContent from poemsong
