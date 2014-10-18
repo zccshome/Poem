@@ -56,7 +56,7 @@ function searchPoemByAuthor(page) {
 
 function searchPoemByPattern(page) {
 	var pattern = $("input[name='searchPoemByPatternInput']").val();
-	url = "alldynasty/pattern/"+page;
+	url = "tang/pattern/"+page;
 	$.ajax({
 		url: url,
 		type: "GET",
@@ -87,9 +87,9 @@ function searchPoemAll(page) {
  */
 function search(suffixURL, page) {
 	if(page == 0)
-		url = "alldynasty"+suffixURL;
+		url = "tang"+suffixURL;
 	else
-		url = "alldynasty"+suffixURL+"/"+page;
+		url = "tang"+suffixURL+"/"+page;
 	
 	$.ajax({
 		url: url,

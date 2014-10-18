@@ -131,7 +131,7 @@ function clearPagination() {
 function countPoem(suffixURL) {
 	var count = 0;
 	$.ajax({
-		url: "alldynasty/"+suffixURL,
+		url: "tang/"+suffixURL,
 		type: "GET",
 		async: false,
 		contentType: "application/json",
@@ -151,7 +151,7 @@ function countPoem(suffixURL) {
 function countPoem(suffixURL, pattern) {
 	var count = 0;
 	$.ajax({
-		url: "alldynasty/"+suffixURL,
+		url: "tang/"+suffixURL,
 		type: "GET",
 		async: false,
 		contentType: "application/json",
